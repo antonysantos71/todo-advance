@@ -37,7 +37,7 @@ export const TaskList = () => {
       },
     ]);
 
-    console.log(list)
+    console.log(list);
   }
   return (
     <div className="h-sreen ">
@@ -56,15 +56,24 @@ export const TaskList = () => {
           )}
 
           <div className="p-7 m-14 h-1/5 bg-zinc-700 rounded-xl flex flex-col gap-3">
-          {list.length === 0 ? (
-            <p className="text-sm text-gray-500">Nenhuma atividade cadastrada.</p>
-          ): "  "}
+            {list.length === 0 ? (
+              <p className="text-sm text-gray-500">
+                Nenhuma atividade cadastrada.
+              </p>
+            ) : (
+              "  "
+            )}
             {list.map((task) => {
               return (
-                <div key={task.id} className="flex justify-between bg-zinc-800 p-3 px-5 rounded-md">
+                <div
+                  key={task.id}
+                  className="flex justify-between bg-zinc-800 p-3 px-5 rounded-md"
+                >
                   <div className="flex flex-col gap-1">
                     <span className="font-semibold">{task.title}</span>
-                    <span className="text-sm text-gray-500">{task.description}</span>
+                    <span className="text-sm text-gray-500">
+                      {task.description}
+                    </span>
                   </div>
                   <div className="flex justify-center">
                     <button className="flex gap-2 items-center">
