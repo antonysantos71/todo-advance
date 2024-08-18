@@ -1,0 +1,29 @@
+{
+  "tasks": [
+    {
+      "id": "1",
+      "description": "Example task",
+      "completed": false,
+      "dateCreated": "2024-08-18T12:00:00Z"
+    }
+  ],
+  "reminders": [
+    {
+      "id": "1",
+      "text": "Buy groceries",
+      "date": "2024-08-19T09:00:00Z",
+      "priority": "high",
+      "completed": false
+    }
+  ],
+  "weeklyGoals": [
+    {
+      "id": "1",
+      "goal": "Exercise 3 times this week",
+      "startDate": "2024-08-18T00:00:00Z",
+      "endDate": "2024-08-24T23:59:59Z",
+      "status": "in-progress",
+      "progress": "50%"
+    }
+  ]
+}
