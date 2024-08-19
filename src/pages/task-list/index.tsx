@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Header } from "../../components/header";
 import { Aside } from "../../components/aside";
 import { FormCreateModal } from "./form-create-modal";
 import { Link2 } from "lucide-react";
+import { taskServices } from "../../services/api/tasks-services";
 
 interface IListPrps {
   id: number;
@@ -25,20 +26,33 @@ export const TaskList = () => {
     setModal(false);
   }
 
-  function addTask() {
-    setList((previus) => [
-      ...previus,
-      {
+  useEffect(() => {
+    const getTasks = async () => {
+      const tasksData = await taskServices.getTasks();
+      if(tasksData){
+        setList(tasksData);
+      }
+    }
+
+    getTasks();
+  }, [])
+
+  const createTaks = async () => {
+    try {
+      const newTask = {
         id: Date.now(),
         title,
         description,
         completed: false,
-        dateCreated: new Date().toLocaleString(),
-      },
-    ]);
-
-    console.log(list);
+        dateCreated: new Date().toISOString(),
+      }
+      const createdTasks = await taskServices.createTask(newTask);
+      setList((previusTaks) => [...previusTaks, createdTasks])
+    } catch (error) {
+      console.error(error);
+    }
   }
+
   return (
     <div className="h-sreen ">
       <div className="flex">
@@ -49,7 +63,7 @@ export const TaskList = () => {
           {createModal && (
             <FormCreateModal
               closeCreateModal={closeCreateModal}
-              createTask={addTask}
+              createTask={createTaks}
               setTitle={setTitle}
               setDescription={setDescription}
             />
