@@ -1,22 +1,6 @@
 {
-  "tasks": [
-    {
-      "id": 1724030917829,
-      "title": "dddddddd",
-      "description": "ddddddd",
-      "completed": false,
-      "dateCreated": "2024-08-19T01:28:37.829Z"
-    }
-  ],
-  "reminders": [
-    {
-      "id": "1",
-      "text": "Buy groceries",
-      "date": "2024-08-19T09:00:00Z",
-      "priority": "high",
-      "completed": false
-    }
-  ],
+  "tasks": [],
+  "reminders": [],
   "weeklyGoals": [
     {
       "id": "1",

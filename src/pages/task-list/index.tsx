@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import { Header } from "../../components/header";
 import { Aside } from "../../components/aside";
 import { FormCreateModal } from "./form-create-modal";
-import { Link2 } from "lucide-react";
 import { taskServices } from "../../services/api/tasks-services";
+import { Link2 } from "lucide-react";
 
 interface IListPrps {
   id: number;
@@ -29,13 +29,13 @@ export const TaskList = () => {
   useEffect(() => {
     const getTasks = async () => {
       const tasksData = await taskServices.getTasks();
-      if(tasksData){
+      if (tasksData) {
         setList(tasksData);
       }
-    }
+    };
 
     getTasks();
-  }, [])
+  }, []);
 
   const createTaks = async () => {
     try {
@@ -45,13 +45,17 @@ export const TaskList = () => {
         description,
         completed: false,
         dateCreated: new Date().toISOString(),
-      }
+      };
       const createdTasks = await taskServices.createTask(newTask);
-      setList((previusTaks) => [...previusTaks, createdTasks])
+      setList((previusTaks) => [...previusTaks, createdTasks]);
     } catch (error) {
       console.error(error);
     }
-  }
+  };
+
+  const [showAll, setShowAll] = useState(false);
+
+  const initialDisplayCount = 4;
 
   return (
     <div className="h-sreen ">
@@ -69,35 +73,44 @@ export const TaskList = () => {
             />
           )}
 
-          <div className="p-7 m-14 h-1/5 bg-zinc-700 rounded-xl flex flex-col gap-3">
+          <div className="task-container max-h-96 overflow-y-auto px-12 my-12">
             {list.length === 0 ? (
               <p className="text-sm text-gray-500">
                 Nenhuma atividade cadastrada.
               </p>
-            ) : (
-              "  "
-            )}
-            {list.map((task) => {
-              return (
+            ): ""}
+            {list
+              .slice(0, showAll ? list.length : initialDisplayCount)
+              .map((task) => (
                 <div
                   key={task.id}
-                  className="flex justify-between bg-zinc-800 p-3 px-5 rounded-md"
+                  className="flex justify-between bg-zinc-800 p-3 px-5 rounded-md mb-2"
                 >
                   <div className="flex flex-col gap-1">
-                    <span className="font-semibold">{task.title}</span>
+                    <span className="font-semibold text-white">
+                      {task.title}
+                    </span>
                     <span className="text-sm text-gray-500">
                       {task.description}
                     </span>
                   </div>
-                  <div className="flex justify-center">
-                    <button className="flex gap-2 items-center">
+                  <div className="flex items-center">
+                    <button className="flex gap-2 items-center text-blue-500">
                       view task
+                      {/* Supondo que Link2 é um componente de ícone */}
                       <Link2 className="size-5" />
                     </button>
                   </div>
                 </div>
-              );
-            })}
+              ))}
+            {list.length > initialDisplayCount && (
+              <button
+                className="mt-2 text-blue-500 hover:underline"
+                onClick={() => setShowAll(!showAll)}
+              >
+                {showAll ? "Show Less" : "Show More"}
+              </button>
+            )}
           </div>
         </div>
       </div>

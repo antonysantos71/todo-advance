@@ -2,14 +2,14 @@ import { X } from "lucide-react";
 
 interface IFormCreateModalProps {
   closeCreateModal: () => void;
-  createTask: () => void;
+  createWeek: () => void;
   setTitle: (value: string) => void;
   setDescription: (value: string) => void;
 }
 
 export const FormCreateModal = ({
   closeCreateModal,
-  createTask,
+  createWeek,
   setTitle,
   setDescription,
 }: IFormCreateModalProps) => {
@@ -25,7 +25,7 @@ export const FormCreateModal = ({
           </div>
           <div>
             <label htmlFor="input1" className="block text-sm font-medium">
-              title
+              title 
             </label>
             <input
               type="text"
@@ -45,7 +45,7 @@ export const FormCreateModal = ({
           </div>
           <button
             onClick={() => {
-              createTask();
+              createWeek();
               closeCreateModal();
             }}
             className="w-full py-2 px-4 bg-zinc-500 text-white font-semibold rounded-md shadow-md hover:bg-zinc-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
