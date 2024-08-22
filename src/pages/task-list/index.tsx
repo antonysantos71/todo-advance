@@ -1,3 +1,4 @@
+// pages/TaskList.tsx
 import { useEffect, useState } from "react";
 import { Header } from "../../components/header";
 import { Aside } from "../../components/aside";
@@ -20,20 +21,22 @@ export const TaskList = () => {
   const [description, setDescription] = useState<string>("");
   const [editTask, setEditTask] = useState<IListPrps | null>(null);
   const [editModal, setEditModal] = useState<boolean>(false);
+  const [showAll, setShowAll] = useState(false);
+  const [isAsideOpen, setIsAsideOpen] = useState<boolean>(false);
 
   const openCreateModal = () => setModal(true);
-
   const closeCreateModal = () => setModal(false);
-
   const openEditModal = (task: IListPrps) => {
     setEditTask(task);
     setEditModal(true);
   };
-
   const closeEditModal = () => {
     setEditTask(null);
     setEditModal(false);
   };
+
+    const toggleAside = () => setIsAsideOpen(prev => !prev);
+    const closeAside = () => setIsAsideOpen(false);
 
   useEffect(() => {
     const getTasks = async () => {
@@ -42,14 +45,12 @@ export const TaskList = () => {
         setList(tasksData);
       }
     };
-
     getTasks();
   }, []);
 
   const createTaks = async () => {
     try {
       const newTask = {
-        // id: Date.now(),
         title,
         description,
         dateCreated: new Date().toISOString(),
@@ -93,85 +94,79 @@ export const TaskList = () => {
     }
   };
 
-  const [showAll, setShowAll] = useState(false);
   const initialDisplayCount = 4;
 
   return (
-    <div className="h-sreen ">
-      <div className="flex">
-        <Aside />
-        <div className="h-full w-full ">
-          <Header openCreateModal={openCreateModal} typePage="Atividade" />
-
-          {createModal && (
-            <FormCreateModal
-              closeCreateModal={closeCreateModal}
-              createTask={createTaks}
-              setTitle={setTitle}
-              setDescription={setDescription}
-            />
+    <div className="flex">
+      <Aside isOpen={isAsideOpen} closeAside={closeAside} />
+      <div className="w-full h-full">
+        <Header
+          openCreateModal={openCreateModal}
+          typePage="atividades"
+          openAside={toggleAside}
+        />
+        {createModal && (
+          <FormCreateModal
+            closeCreateModal={closeCreateModal}
+            createTask={createTaks}
+            setTitle={setTitle}
+            setDescription={setDescription}
+          />
+        )}
+        {editModal && editTask && (
+          <FormEditModal
+            closeEditModal={closeEditModal}
+            task={editTask}
+            updateTask={updateTask}
+          />
+        )}
+        <div className="task-container max-h-96 overflow-y-auto px-12 my-12">
+          {list.length === 0 ? (
+            <p className="text-sm text-gray-500">
+              Nenhuma atividade cadastrada.
+            </p>
+          ) : (
+            ""
           )}
-
-          {editModal && editTask && (
-            <FormEditModal
-              closeEditModal={closeEditModal}
-              task={editTask}
-              updateTask={updateTask}
-            />
-          )}
-
-          <div className="task-container max-h-96 overflow-y-auto px-12 my-12">
-            {list.length === 0 ? (
-              <p className="text-sm text-gray-500">
-                Nenhuma atividade cadastrada.
-              </p>
-            ) : (
-              ""
-            )}
-            {list
-              .slice(0, showAll ? list.length : initialDisplayCount)
-              .map((task) => (
-                <div
-                  key={task.id}
-                  className="flex justify-between bg-zinc-800 p-3 px-5 rounded-md mb-2 flex-wrap"
-                >
-                  <div className="flex flex-col gap-1">
-                    <span className="font-semibold text-white">
-                      {task.title}
-                    </span>
-                    <span className="text-sm text-gray-500">
-                      {task.description}
-                    </span>
-                  </div>
-                  <div className="flex items-center justify-center gap-3">
-                    <button
-                      onClick={() => {
-                        openEditModal(task);
-                      }}
-                      className="flex text-blue-500"
-                    >
-                      <Edit />
-                    </button>
-                    <button
-                      onClick={() => {
-                        deleteTask(task.id);
-                      }}
-                      className="flex text-blue-500"
-                    >
-                      <Trash />
-                    </button>
-                  </div>
-                </div>
-              ))}
-            {list.length > initialDisplayCount && (
-              <button
-                className="mt-2 text-blue-500 hover:underline"
-                onClick={() => setShowAll(!showAll)}
+          {list
+            .slice(0, showAll ? list.length : initialDisplayCount)
+            .map((task) => (
+              <div
+                key={task.id}
+                className="flex justify-between bg-zinc-800 p-3 px-5 rounded-md mb-2 flex-wrap"
               >
-                {showAll ? "Show Less" : "Show More"}
-              </button>
-            )}
-          </div>
+                <div className="flex flex-col gap-1">
+                  <span className="font-semibold text-white">
+                    {task.title}
+                  </span>
+                  <span className="text-sm text-gray-500">
+                    {task.description}
+                  </span>
+                </div>
+                <div className="flex items-center justify-center gap-3">
+                  <button
+                    onClick={() => openEditModal(task)}
+                    className="flex text-blue-500"
+                  >
+                    <Edit />
+                  </button>
+                  <button
+                    onClick={() => deleteTask(task.id)}
+                    className="flex text-blue-500"
+                  >
+                    <Trash />
+                  </button>
+                </div>
+              </div>
+            ))}
+          {list.length > initialDisplayCount && (
+            <button
+              className="mt-2 text-blue-500 hover:underline"
+              onClick={() => setShowAll(!showAll)}
+            >
+              {showAll ? "Show Less" : "Show More"}
+            </button>
+          )}
         </div>
       </div>
     </div>

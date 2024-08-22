@@ -45,14 +45,14 @@ export const FormEditModal: React.FC<FormEditModalProps> = ({
       <div className="bg-zinc-800 p-8 rounded-lg shadow-lg w-full max-w-sm">
         <form onSubmit={(e) => e.preventDefault()} className="space-y-4">
           <div className="flex justify-between items-center">
-            <span className="text-lg">create new tasks</span>
+            <span className="text-lg">Editar tarefa</span>
             <button onClick={closeEditModal}>
               <X className="size-5" />
             </button>
           </div>
           <div>
             <label htmlFor="input1" className="block text-sm font-medium">
-              title
+              Titulo
             </label>
             <input
               type="text"
@@ -63,7 +63,7 @@ export const FormEditModal: React.FC<FormEditModalProps> = ({
           </div>
           <div>
             <label htmlFor="input2" className="block text-sm font-medium">
-              Description
+              Descrição
             </label>
             <input
               type="text"

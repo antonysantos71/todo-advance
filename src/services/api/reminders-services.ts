@@ -1,7 +1,7 @@
 import { api } from ".";
 
 export interface IRemindersProps {
-  id: number;
+  id?: number;
   title: string;
   description: string;
   completed: boolean;

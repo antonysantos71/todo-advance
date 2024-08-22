@@ -1,14 +1,20 @@
-import { Plus } from "lucide-react";
+import { Menu, Plus } from "lucide-react";
 
 interface IHeaderProps {
   openCreateModal?: () => void;
   typePage: string;
+  openAside?: () => void;
 }
 
-export const Header = ({openCreateModal, typePage}: IHeaderProps) => {
+export const Header = ({ openCreateModal, typePage, openAside }: IHeaderProps) => {
   return (
-    <div className=" flex w-full justify-between items-center h-28 px-10 bg-zinc-700">
-      <span className="text-xl">{typePage}</span>
+    <div className="flex w-full justify-between items-center h-28 px-10 bg-zinc-700">
+      <div className="flex gap-2 items-center justify-center">
+        <button onClick={openAside} className="sm:hidden">
+          <Menu />
+        </button>
+        <span className="text-xl">{typePage}</span>
+      </div>
       <button
         onClick={openCreateModal}
         className="flex gap-2 items-center justify-center bg-zinc-600 p-3 px-7 rounded-lg"

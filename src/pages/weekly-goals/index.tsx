@@ -15,9 +15,13 @@ export const WeeklyGoals = () => {
   const [title, setTitle] = useState<string>("");
   const [description, setDescription] = useState<string>("");
   const [list, setList] = useState<IListPrps[]>([]);
+  const [isAsideOpen, setIsAsideOpen] = useState<boolean>(false);
   const openCreateModalWeekGoals = () => setWeekGoals(true);
 
   const closeCreateModalWeekGoals = () => setWeekGoals(false);
+
+  const toggleAside = () => setIsAsideOpen((prev) => !prev);
+  const closeAside = () => setIsAsideOpen(false);
 
   function addWeekGoals() {
     setList((previus) => [
@@ -40,11 +44,12 @@ export const WeeklyGoals = () => {
 
   return (
     <div className="flex">
-      <Aside />
-      <div className="h-full w-full ">
+      <Aside isOpen={isAsideOpen} closeAside={closeAside} />
+      <div className="w-full h-full">
         <Header
-          typePage="Week Goals"
           openCreateModal={openCreateModalWeekGoals}
+          typePage="objetivos"
+          openAside={toggleAside}
         />
         {createWeekGoals && (
           <FormCreateModal

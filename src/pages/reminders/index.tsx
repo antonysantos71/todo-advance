@@ -7,7 +7,7 @@ import { remindersServices } from "../../services/api/reminders-services";
 import { InforsModalReminders } from "./infors-modal-reminders";
 
 interface IListPrps {
-  id: number;
+  id?: number;
   title: string;
   description: string;
   completed: boolean;
@@ -29,7 +29,11 @@ export const Reminders = () => {
   const [completed, setCompleted] = useState<boolean>(false);
   const [list, setList] = useState<IListPrps[]>([]);
   const [showAll, setShowAll] = useState(false);
-  const [selectedReminderId, setSelectedReminderId] = useState<number | null>(null);
+  const [selectedReminderId, setSelectedReminderId] = useState<number | null>(
+    null
+  );
+  const [isAsideOpen, setIsAsideOpen] = useState<boolean>(false);
+
   const initialDisplayCount = 4;
 
   const openCreateModalReminders = () => setCreateReminders(true);
@@ -40,6 +44,9 @@ export const Reminders = () => {
   const closeInforsModalReminders = () => {
     setSelectedReminderId(null);
   };
+
+  const toggleAside = () => setIsAsideOpen((prev) => !prev);
+  const closeAside = () => setIsAsideOpen(false);
 
   useEffect(() => {
     const getReminders = async () => {
@@ -58,7 +65,7 @@ export const Reminders = () => {
   const createReminder = async () => {
     try {
       const newReminder = {
-        id: Date.now(),
+        // id: Date.now(),
         title,
         description,
         completed,
@@ -68,20 +75,34 @@ export const Reminders = () => {
         recurring,
         dateCreated: new Date().toLocaleString(),
       };
-      const createdReminder = await remindersServices.createReminder(newReminder);
-      setList(prevReminders => [...prevReminders, createdReminder]);
+      const createdReminder = await remindersServices.createReminder(
+        newReminder
+      );
+      setList((prevReminders) => [...prevReminders, createdReminder]);
     } catch (error) {
       console.error("Error creating reminder:", error);
     }
   };
 
+  const deleteReminder = async (id: number) => {
+    try {
+      await remindersServices.deleteReminder(id);
+      setList((prevReminders) =>
+        prevReminders.filter((reminder) => reminder.id !== id)
+      );
+    } catch (error) {
+      console.error("Error deleting reminder:", error);
+    }
+  };
+
   return (
     <div className="flex">
-      <Aside />
+      <Aside isOpen={isAsideOpen} closeAside={closeAside} />
       <div className="h-full w-full">
         <Header
-          typePage="Reminders"
           openCreateModal={openCreateModalReminders}
+          typePage="lembretes"
+          openAside={toggleAside}
         />
         {createReminders && (
           <FormCreateModal
@@ -143,6 +164,7 @@ export const Reminders = () => {
           <InforsModalReminders
             closeModal={closeInforsModalReminders}
             id={selectedReminderId}
+            deleteReminder={() =>  deleteReminder(selectedReminderId)}
           />
         )}
       </div>
