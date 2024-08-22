@@ -4,17 +4,18 @@ import { Header } from "../../components/header";
 import { FormCreateModal } from "./form-create-modal";
 import { Link2 } from "lucide-react";
 import { remindersServices } from "../../services/api/reminders-services";
+import { InforsModalReminders } from "./infors-modal-reminders";
 
 interface IListPrps {
   id: number;
   title: string;
   description: string;
   completed: boolean;
-  priority: string | undefined
-  category:string | undefined
-  dueDate: string | undefined
-  recurring: string | undefined
-  dateCreated: string; // Adicionada a propriedade dateCreated
+  priority: string | undefined;
+  category: string | undefined;
+  dueDate: string | undefined;
+  recurring: string | undefined;
+  dateCreated: string;
 }
 
 export const Reminders = () => {
@@ -28,41 +29,51 @@ export const Reminders = () => {
   const [completed, setCompleted] = useState<boolean>(false);
   const [list, setList] = useState<IListPrps[]>([]);
   const [showAll, setShowAll] = useState(false);
-
+  const [selectedReminderId, setSelectedReminderId] = useState<number | null>(null);
   const initialDisplayCount = 4;
 
   const openCreateModalReminders = () => setCreateReminders(true);
   const closeCreateModalReminders = () => setCreateReminders(false);
+  const openInforsModalReminders = (id: number) => {
+    setSelectedReminderId(id);
+  };
+  const closeInforsModalReminders = () => {
+    setSelectedReminderId(null);
+  };
 
   useEffect(() => {
     const getReminders = async () => {
-      const remindersData = await remindersServices.getReminders();
-      if(remindersData) {
-        setList(remindersData);
+      try {
+        const remindersData = await remindersServices.getReminders();
+        if (remindersData) {
+          setList(remindersData);
+        }
+      } catch (error) {
+        console.error("Error fetching reminders:", error);
       }
     };
     getReminders();
-  }, [])
+  }, []);
 
   const createReminder = async () => {
     try {
       const newReminder = {
         id: Date.now(),
-          title,
-          description,
-          completed,
-          priority,
-          category,
-          dueDate,
-          recurring,
-          dateCreated: new Date().toLocaleString(),
+        title,
+        description,
+        completed,
+        priority,
+        category,
+        dueDate,
+        recurring,
+        dateCreated: new Date().toLocaleString(),
       };
       const createdReminder = await remindersServices.createReminder(newReminder);
-      setList((previusReminders) => [...previusReminders, createdReminder]);
-    } catch {
-      console.error("Error creating reminder");
+      setList(prevReminders => [...prevReminders, createdReminder]);
+    } catch (error) {
+      console.error("Error creating reminder:", error);
     }
-  }
+  };
 
   return (
     <div className="flex">
@@ -83,15 +94,13 @@ export const Reminders = () => {
             setDueDate={setDueDate}
             setRecurring={setRecurring}
             createReminders={createReminder}
-            completed
+            completed={completed}
           />
         )}
 
         <div className="task-container max-h-96 overflow-y-auto px-12 my-12">
           {list.length === 0 ? (
-            <p className="text-sm text-gray-500">
-              Nenhuma atividade cadastrada.
-            </p>
+            <p className="text-sm text-gray-500">Nenhum lembrete cadastrado.</p>
           ) : (
             list
               .slice(0, showAll ? list.length : initialDisplayCount)
@@ -109,7 +118,10 @@ export const Reminders = () => {
                     </span>
                   </div>
                   <div className="flex items-center">
-                    <button className="flex gap-2 items-center text-blue-500">
+                    <button
+                      onClick={() => openInforsModalReminders(reminder.id)}
+                      className="flex text-blue-500 gap-2 items-center"
+                    >
                       View Reminder
                       <Link2 className="size-5" />
                     </button>
@@ -126,6 +138,13 @@ export const Reminders = () => {
             </button>
           )}
         </div>
+
+        {selectedReminderId !== null && (
+          <InforsModalReminders
+            closeModal={closeInforsModalReminders}
+            id={selectedReminderId}
+          />
+        )}
       </div>
     </div>
   );

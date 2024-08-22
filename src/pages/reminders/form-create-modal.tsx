@@ -34,7 +34,7 @@ export const FormCreateModal = ({
   };
 
   return (
-    <div className="fixed inset-0 flex justify-center items-center min-h-screen bg-transparent">
+    <div className="fixed inset-0 flex justify-center items-center min-h-screen bg-black bg-opacity-50 z-50">
       <div className="bg-zinc-800 p-8 rounded-lg shadow-lg w-full max-w-sm">
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="flex justify-between items-center">
@@ -84,7 +84,7 @@ export const FormCreateModal = ({
             </label>
             <select
               id="priority"
-              className="outline-0 mt-1 border-b-0.5 block w-full bg-transparent shadow-sm"
+              className="outline-0 mt-1 border-b-0.5 block w-full bg-zinc-800 shadow-sm"
               onChange={(e) => setPriority(e.target.value)}
             >
               <option value="">Select priority</option>
@@ -111,7 +111,7 @@ export const FormCreateModal = ({
             <input
               id="dueDate"
               type="datetime-local"
-              className="outline-0 mt-1 border-b-0.5 block w-full bg-transparent shadow-sm"
+              className="outline-0 mt-1 border-b-0.5 block w-full bg-zinc-800 shadow-sm"
               onChange={(e) => setDueDate(e.target.value)}
             />
           </div>
@@ -121,7 +121,7 @@ export const FormCreateModal = ({
             </label>
             <select
               id="recurring"
-              className="outline-0 mt-1 border-b-0.5 block w-full bg-transparent shadow-sm"
+              className="outline-0 mt-1 border-b-0.5 block w-full bg-zinc-800 shadow-sm"
               onChange={(e) => setRecurring(e.target.value)}
             >
               <option value="">Select recurrence</option>

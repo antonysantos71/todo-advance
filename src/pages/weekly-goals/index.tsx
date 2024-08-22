@@ -61,7 +61,7 @@ export const WeeklyGoals = () => {
         <div className="task-container max-h-96 overflow-y-auto px-12 my-12">
           {list.length === 0 ? (
             <p className="text-sm text-gray-500">
-              Nenhuma atividade cadastrada.
+              Nenhum objetivo cadastrado.
             </p>
           ) : (
             ""
