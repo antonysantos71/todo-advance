@@ -1,26 +1,6 @@
 {
-  "tasks": [
-    {
-      "id": 1724156437901,
-      "title": "ddddddddddd",
-      "description": "ddddddd",
-      "completed": false,
-      "dateCreated": "2024-08-20T12:20:37.901Z"
-    }
-  ],
-  "reminders": [
-    {
-      "id": 1724156493215,
-      "title": "ffffffff",
-      "description": "ffff",
-      "completed": false,
-      "priority": "high",
-      "category": "fffffffff",
-      "dueDate": "2024-08-07T09:21",
-      "recurring": "daily",
-      "dateCreated": "20/08/2024, 09:21:33"
-    }
-  ],
+  "tasks": [],
+  "reminders": [],
   "weeklyGoals": [
     {
       "id": "1",

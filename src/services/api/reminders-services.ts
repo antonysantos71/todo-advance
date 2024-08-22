@@ -22,6 +22,16 @@ export const getReminders = async ():Promise<IRemindersProps[]> => {
   }
 }
 
+const getRemindersById = async (id: number):Promise<IRemindersProps | undefined> => {
+  try {
+    const response = await api.get(`/reminders/${id}`);
+    return response.data;
+  } catch (error) {
+    console.error(error);
+    return
+  }
+}
+
 
 const createReminder = async (task: IRemindersProps):Promise<IRemindersProps> => {
   try {
@@ -33,8 +43,20 @@ const createReminder = async (task: IRemindersProps):Promise<IRemindersProps> =>
   }
 }
 
+const deleteReminder = async (id: number): Promise<void> => {
+  try {
+    const response = await api.delete(`/reminders/${id}`);
+    return response.data;
+  } catch(error) {
+    console.error(error);
+    throw error;
+  }
+}
+
 export const remindersServices = {
   getReminders,
-  createReminder
+  getRemindersById,
+  createReminder,
+  deleteReminder
 }
 

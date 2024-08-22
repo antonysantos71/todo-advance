@@ -4,7 +4,6 @@ export interface ITasksProps {
   id: number;
   title: string;
   description: string;
-  completed: boolean;
   dateCreated: string;
 }
 
@@ -18,7 +17,7 @@ const getTasks =  async ():Promise<ITasksProps[] | undefined> => {
   }
 }
 
-const createTask = async (task: ITasksProps):Promise<ITasksProps> => {
+const createTask = async (task: Omit<ITasksProps, "id">):Promise<ITasksProps> => {
   try {
     const response = await api.post("/tasks", task);
     return response.data;
@@ -40,7 +39,8 @@ const updateTask = async (id:number, newTask:Omit<ITasksProps, "id">): Promise<I
 
 const deleteTask = async (id: number): Promise<void> => {
   try {
-    await api.delete(`/tasks/${id}`);
+    const response = await api.delete(`/tasks/${id}`);
+    return response.data;
   } catch(error) {
     console.error(error);
     throw error;
