@@ -15,12 +15,9 @@ export const WeeklyGoals = () => {
   const [title, setTitle] = useState<string>("");
   const [description, setDescription] = useState<string>("");
   const [list, setList] = useState<IListPrps[]>([]);
-  function openCreateModalWeekGoals() {
-    setWeekGoals(true);
-  }
-  function closeCreateModalWeekGoals() {
-    setWeekGoals(false);
-  }
+  const openCreateModalWeekGoals = () => setWeekGoals(true);
+
+  const closeCreateModalWeekGoals = () => setWeekGoals(false);
 
   function addWeekGoals() {
     setList((previus) => [
@@ -60,9 +57,7 @@ export const WeeklyGoals = () => {
 
         <div className="task-container max-h-96 overflow-y-auto px-12 my-12">
           {list.length === 0 ? (
-            <p className="text-sm text-gray-500">
-              Nenhum objetivo cadastrado.
-            </p>
+            <p className="text-sm text-gray-500">Nenhum objetivo cadastrad.</p>
           ) : (
             ""
           )}
