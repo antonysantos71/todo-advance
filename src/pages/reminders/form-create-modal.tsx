@@ -1,22 +1,18 @@
 import { X } from "lucide-react";
-import { useState } from "react";
 
 interface IFormCreateModalProps {
   closeCreateModal: () => void;
   createReminders: () => void; 
   setTitle: (value: string) => void;
   setDescription: (value: string) => void;
-  setCompleted: (value: boolean) => void;
   setPriority: (value: string) => void;
   setCategory: (value: string | undefined) => void;
   setDueDate: (value: string | undefined) => void;
   setRecurring: (value: string | undefined) => void;
-  completed: boolean
 }
 
 export const FormCreateModal = ({
   closeCreateModal,
-  setCompleted,
   setDescription,
   setTitle,
   setCategory,
@@ -25,11 +21,9 @@ export const FormCreateModal = ({
   setRecurring,
   createReminders,
 }: IFormCreateModalProps) => {
-  const [localCompleted, setLocalCompleted] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setCompleted(localCompleted);
     closeCreateModal();
   };
 
@@ -50,6 +44,7 @@ export const FormCreateModal = ({
           <input
             id="title"
             type="text"
+            placeholder="Digite o titulo"
             className="outline-0 mt-1 border-b-0.5 block w-full bg-transparent shadow-sm"
             onChange={(e) => setTitle(e.target.value)}
             required
@@ -62,20 +57,9 @@ export const FormCreateModal = ({
           <input
             id="description"
             type="text"
+            placeholder="Digite a descrição"
             className="outline-0 mt-1 border-b-0.5 block w-full bg-transparent shadow-sm"
             onChange={(e) => setDescription(e.target.value)}
-          />
-        </div>
-        <div className="flex items-center gap-2">
-          <label htmlFor="completed" className="block text-sm font-medium">
-            Completo
-          </label>
-          <input
-            id="completed"
-            type="checkbox"
-            className="mt-1"
-            checked={localCompleted}
-            onChange={() => setLocalCompleted(!localCompleted)}
           />
         </div>
         <div>
@@ -100,6 +84,7 @@ export const FormCreateModal = ({
           <input
             id="category"
             type="text"
+            placeholder="Digitte a categoria"
             className="outline-0 mt-1 border-b-0.5 block w-full bg-transparent shadow-sm"
             onChange={(e) => setCategory(e.target.value)}
           />
@@ -110,7 +95,7 @@ export const FormCreateModal = ({
           </label>
           <input
             id="dueDate"
-            type="datetime-local"
+            type="date"
             className="outline-0 mt-1 border-b-0.5 block w-full bg-zinc-800 shadow-sm"
             onChange={(e) => setDueDate(e.target.value)}
           />

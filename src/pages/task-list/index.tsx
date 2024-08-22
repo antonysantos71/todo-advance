@@ -61,6 +61,8 @@ export const TaskList = () => {
       } else {
         const createdTasks = await taskServices.createTask(newTask);
         setList((previusTaks) => [...previusTaks, createdTasks]);
+        setTitle("")
+        setDescription("")
       }
     } catch (error) {
       console.error(error);
@@ -111,6 +113,8 @@ export const TaskList = () => {
             createTask={createTaks}
             setTitle={setTitle}
             setDescription={setDescription}
+            title={title}
+            description={description}
           />
         )}
         {editModal && editTask && (
@@ -135,11 +139,11 @@ export const TaskList = () => {
                 key={task.id}
                 className="flex justify-between bg-zinc-800 p-3 px-5 rounded-md mb-2 flex-wrap"
               >
-                <div className="flex flex-col gap-1">
-                  <span className="font-semibold text-white">
+                <div className="flex flex-col gap-1 max-w-xs">
+                  <span className="font-semibold text-white truncate">
                     {task.title}
                   </span>
-                  <span className="text-sm text-gray-500">
+                  <span className="text-sm text-gray-500 truncate">
                     {task.description}
                   </span>
                 </div>

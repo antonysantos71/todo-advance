@@ -6,7 +6,11 @@ interface IHeaderProps {
   openAside?: () => void;
 }
 
-export const Header = ({ openCreateModal, typePage, openAside }: IHeaderProps) => {
+export const Header = ({
+  openCreateModal,
+  typePage,
+  openAside,
+}: IHeaderProps) => {
   return (
     <div className="flex w-full justify-between items-center h-28 px-10 bg-zinc-700">
       <div className="flex gap-2 items-center justify-center">
@@ -15,11 +19,8 @@ export const Header = ({ openCreateModal, typePage, openAside }: IHeaderProps) =
         </button>
         <span className="text-xl">{typePage}</span>
       </div>
-      <button
-        onClick={openCreateModal}
-        className="flex gap-2 items-center justify-center bg-zinc-600 p-3 px-7 rounded-lg"
-      >
-        nova {typePage}
+      <button onClick={openCreateModal} className="flex gap-2 flex-row items-center justify-center bg-zinc-600 p-2 rounded-lg sm:p-3">
+        <span className="hidden sm:flex">nova {typePage}</span>
         <Plus className="size-5" />
       </button>
     </div>

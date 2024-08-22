@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Trash, X } from "lucide-react";
+import { Calendar, Circle, Clock, FileText, Tag, Trash, X } from "lucide-react";
 import {
   remindersServices,
   IRemindersProps,
@@ -8,13 +8,13 @@ import {
 interface InforsModalRemindersProps {
   closeModal: () => void;
   id: number;
-  deleteReminder: () => void
+  deleteReminder: () => void;
 }
 
 export const InforsModalReminders: React.FC<InforsModalRemindersProps> = ({
   closeModal,
   id,
-  deleteReminder
+  deleteReminder,
 }) => {
   const [reminder, setReminder] = useState<IRemindersProps>();
 
@@ -36,55 +36,82 @@ export const InforsModalReminders: React.FC<InforsModalRemindersProps> = ({
   return (
     <div
       key={id}
-      className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50"
+      className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-60 z-50"
     >
-      <div className="bg-zinc-800 text-white p-6 rounded-md w-full max-w-md relative">
-        <div className="flex justify-between items-center mb-2">
-          <h2 className="text-xl font-semibold ">Detalhes do lembrete </h2>
-          <button onClick={closeModal}>
-            <X size={24} />
+      <div className="bg-zinc-800 text-white p-4 rounded-lg shadow-md w-full max-w-md relative">
+        <div className="flex justify-between items-center mb-3">
+          <span className="text-lg">Detalhes do Lembrete</span>
+          <button type="button" onClick={closeModal}>
+            <X className="size-5" />
           </button>
         </div>
-        <p className="mb-2">
-          <span className="font-semibold">Título:</span>{" "}
-          {reminder?.title || "Carregando..."}
-        </p>
-        <p className="mb-2">
-          <span className="font-semibold">Descrição:</span>{" "}
-          {reminder?.description || "Carregando..."}
-        </p>
-        <p className="mb-2">
-          <span className="font-semibold">Categoria:</span>{" "}
-          {reminder?.category || "N/A"}
-        </p>
-        <p className="mb-2">
-          <span className="font-semibold">Data de Criação:</span>{" "}
-          {reminder?.dateCreated || "N/A"}
-        </p>
-        <p className="mb-2">
-          <span className="font-semibold">Data de Vencimento:</span>{" "}
-          {reminder?.dueDate || "N/A"}
-        </p>
-        <p className="mb-2">
-          <span className="font-semibold">Prioridade:</span>{" "}
-          {reminder?.priority || "N/A"}
-        </p>
-        <p className="mb-2">
-          <span className="font-semibold">Recorrente:</span>{" "}
-          {reminder?.recurring || "N/A"}
-        </p>
-        <p className="mb-2">
-          <span className="font-semibold">Completada:</span>{" "}
-          {reminder?.completed ? "Sim" : "Não"}
-        </p>
-        <button 
-        onClick={() => {
-          deleteReminder();
-          closeModal();
-        }}
-        className="flex justify-center w-full items-center gap-2 bg-red-600 p-2 rounded-lg hover:bg-red-700">
-          Delete reminder <Trash className="size-5"/>
-        </button>
+        <div className="space-y-2">
+          <div className="flex items-center space-x-2">
+            <FileText className="w-5 h-5 text-gray-300" />
+            <div>
+              <p className="font-semibold">Título</p>
+              <p className="text-gray-300">
+                {reminder?.title || "Carregando..."}
+              </p>
+            </div>
+          </div>
+          <div className="flex items-center space-x-2">
+            <FileText className="w-5 h-5 text-gray-300" />
+            <div>
+              <p className="font-semibold">Descrição</p>
+              <p className="text-gray-300">
+                {reminder?.description || "Carregando..."}
+              </p>
+            </div>
+          </div>
+          <div className="flex items-center space-x-2">
+            <Tag className="w-5 h-5 text-gray-300" />
+            <div>
+              <p className="font-semibold">Categoria</p>
+              <p className="text-gray-300">{reminder?.category || "N/A"}</p>
+            </div>
+          </div>
+          <div className="flex items-center space-x-2">
+            <Calendar className="w-5 h-5 text-gray-300" />
+            <div>
+              <p className="font-semibold">Data de Criação</p>
+              <p className="text-gray-300">{reminder?.dateCreated || "N/A"}</p>
+            </div>
+          </div>
+          <div className="flex items-center space-x-2">
+            <Clock className="w-5 h-5 text-gray-300" />
+            <div>
+              <p className="font-semibold">Data de Vencimento</p>
+              <p className="text-gray-300">{reminder?.dueDate || "N/A"}</p>
+            </div>
+          </div>
+          <div className="flex items-center space-x-2">
+            <Circle className="w-5 h-5 text-gray-300" />
+            <div>
+              <p className="font-semibold">Prioridade</p>
+              <p className="text-gray-300">{reminder?.priority || "N/A"}</p>
+            </div>
+          </div>
+          <div className="flex items-center space-x-2">
+            <Calendar className="w-5 h-5 text-gray-300" />
+            <div>
+              <p className="font-semibold">Recorrente</p>
+              <p className="text-gray-300">{reminder?.recurring || "N/A"}</p>
+            </div>
+          </div>
+        </div>
+        <div className="mt-4 flex justify-center">
+          <button
+            onClick={() => {
+              deleteReminder();
+              closeModal();
+            }}
+            className="flex items-center gap-2 bg-red-600 text-white px-3 py-1 rounded-md shadow-md hover:bg-red-700 transition-colors"
+          >
+            <Trash className="w-4 h-4" />
+            <span>Excluir</span>
+          </button>
+        </div>
       </div>
     </div>
   );

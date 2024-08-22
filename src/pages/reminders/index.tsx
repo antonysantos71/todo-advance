@@ -26,7 +26,6 @@ export const Reminders = () => {
   const [category, setCategory] = useState<string | undefined>(undefined);
   const [dueDate, setDueDate] = useState<string | undefined>(undefined);
   const [recurring, setRecurring] = useState<string | undefined>(undefined);
-  const [completed, setCompleted] = useState<boolean>(false);
   const [list, setList] = useState<IListPrps[]>([]);
   const [showAll, setShowAll] = useState(false);
   const [selectedReminderId, setSelectedReminderId] = useState<number | null>(
@@ -64,21 +63,32 @@ export const Reminders = () => {
 
   const createReminder = async () => {
     try {
-      const newReminder = {
+      const newReminder: IListPrps = {
         // id: Date.now(),
         title,
         description,
-        completed,
         priority,
         category,
         dueDate,
         recurring,
         dateCreated: new Date().toLocaleString(),
       };
-      const createdReminder = await remindersServices.createReminder(
-        newReminder
-      );
-      setList((prevReminders) => [...prevReminders, createdReminder]);
+      if(title === "" || description === "" || category === "") {
+        alert("Preechar todos os campos");
+        return;
+      } else {
+        const createdReminder = await remindersServices.createReminder(
+          newReminder
+        );
+        setList((prevReminders) => [...prevReminders, createdReminder]);
+        setTitle("")
+        setDescription("")
+        setCategory("")
+        setPriority("")
+        setDueDate("")
+        setRecurring("")
+        closeCreateModalReminders();
+      }
     } catch (error) {
       console.error("Error creating reminder:", error);
     }
@@ -109,13 +119,11 @@ export const Reminders = () => {
             closeCreateModal={closeCreateModalReminders}
             setTitle={setTitle}
             setDescription={setDescription}
-            setCompleted={setCompleted}
             setPriority={setPriority}
             setCategory={setCategory}
             setDueDate={setDueDate}
             setRecurring={setRecurring}
             createReminders={createReminder}
-            completed={completed}
           />
         )}
 

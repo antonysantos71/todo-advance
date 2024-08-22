@@ -1,4 +1,3 @@
-// components/Aside.tsx
 import { CalendarCheck, ListCheck, SquareCheckBig } from "lucide-react";
 import { Link } from "react-router-dom";
 

@@ -1,21 +1,51 @@
 {
-  "tasks": [
-    {
-      "title": "aaaaaaaaaaaa",
-      "description": "awwwww",
-      "dateCreated": "2024-08-22T02:30:20.433Z",
-      "id": "fcb9"
-    }
-  ],
+  "tasks": [],
   "reminders": [],
   "weeklyGoals": [
     {
-      "id": "1",
-      "goal": "Exercise 3 times this week",
-      "startDate": "2024-08-18T00:00:00Z",
-      "endDate": "2024-08-24T23:59:59Z",
-      "status": "in-progress",
-      "progress": "50%"
+      "id": 1,
+      "title": "sssss",
+      "description": "000",
+      "startDate": "2024-08-23",
+      "endDate": "2024-08-23",
+      "status": "not_started",
+      "progress": 0
+    },
+    {
+      "id": 2,
+      "title": "sssssss",
+      "description": "sssssssss",
+      "startDate": "2024-09-05",
+      "endDate": "2024-08-22",
+      "status": "in_progress",
+      "progress": 0
+    },
+    {
+      "id": 3,
+      "title": "sssss",
+      "description": "sss",
+      "startDate": "2024-08-15",
+      "endDate": "2024-09-07",
+      "status": "in_progress",
+      "progress": 0
+    },
+    {
+      "id": 4,
+      "title": "sssss",
+      "description": "ssssssss",
+      "startDate": "4567-03-12",
+      "endDate": "0456-03-12",
+      "status": "in_progress",
+      "progress": 0
+    },
+    {
+      "id": 5,
+      "title": "sssssssss",
+      "description": "ssssssssssss",
+      "startDate": "2024-08-14",
+      "endDate": "2024-08-28",
+      "status": "",
+      "progress": 0
     }
   ]
 }
