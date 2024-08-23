@@ -1,62 +1,108 @@
 {
-  "tasks": [],
+  "tasks": [
+    {
+      "id": "1a2b",
+      "title": "Revisar Documentação do Projeto",
+      "description": "Revisar a documentação técnica do projeto para garantir que todas as informações estejam atualizadas e completas.",
+      "dateCreated": "2024-08-23T10:00:00.000Z"
+    },
+    {
+      "id": "3c4d",
+      "title": "Atualizar Software de Desenvolvimento",
+      "description": "Atualizar o software de desenvolvimento para a versão mais recente e verificar se há novos patches de segurança.",
+      "dateCreated": "2024-08-23T11:30:00.000Z"
+    },
+    {
+      "id": "5e6f",
+      "title": "Configurar Ambiente de Testes",
+      "description": "Configurar o ambiente de testes para a nova aplicação, incluindo bancos de dados e servidores.",
+      "dateCreated": "2024-08-23T13:00:00.000Z"
+    },
+    {
+      "id": "7g8h",
+      "title": "Revisar Feedback dos Usuários",
+      "description": "Analisar o feedback dos usuários recebido nas últimas duas semanas para identificar áreas de melhoria.",
+      "dateCreated": "2024-08-23T15:00:00.000Z"
+    }
+  ],
   "reminders": [
     {
-      "id": "5466",
-      "title": "cccccc",
-      "description": "cccc",
-      "priority": "medium",
-      "category": "ccccc",
+      "id": "6789",
+      "title": "Enviar Relatório Semanal",
+      "description": "Enviar o relatório semanal de progresso para o gerente de projeto.",
+      "priority": "high",
+      "category": "trabalho",
       "dueDate": "2024-08-30",
-      "recurring": "daily",
-      "dateCreated": "23/08/2024, 08:17:54"
+      "recurring": "weekly",
+      "dateCreated": "2024-08-23T09:00:00"
+    },
+    {
+      "id": "1234",
+      "title": "Reunião de Equipe",
+      "description": "Participar da reunião de equipe para discutir as prioridades da semana.",
+      "priority": "medium",
+      "category": "reunião",
+      "dueDate": "2024-08-28",
+      "recurring": "weekly",
+      "dateCreated": "2024-08-23T09:15:00"
+    },
+    {
+      "id": "5678",
+      "title": "Revisar Metas Mensais",
+      "description": "Revisar o progresso das metas mensais e ajustar conforme necessário.",
+      "priority": "low",
+      "category": "planejamento",
+      "dueDate": "2024-08-31",
+      "recurring": "monthly",
+      "dateCreated": "2024-08-23T09:30:00"
+    },
+    {
+      "id": "9101",
+      "title": "Backup de Dados",
+      "description": "Fazer backup dos dados importantes do projeto antes de começar novos testes.",
+      "priority": "high",
+      "category": "segurança",
+      "dueDate": "2024-08-29",
+      "recurring": "monthly",
+      "dateCreated": "2024-08-23T09:45:00"
     }
   ],
   "weeklyGoals": [
     {
-      "id": "1",
-      "title": "Desenvolver Nova Funcionalidade",
-      "description": "Adicionar uma nova funcionalidade de busca avançada na aplicação.",
-      "startDate": "2024-08-01",
-      "endDate": "2024-08-07",
+      "id": "6",
+      "title": "Finalizar Implementação de API",
+      "description": "Concluir a implementação da nova API e garantir que esteja funcionando corretamente com os sistemas existentes.",
+      "startDate": "2024-08-22",
+      "endDate": "2024-08-28",
       "status": "in_progress",
       "progress": 40
     },
     {
-      "id": "2",
-      "title": "Atualizar Documentação",
-      "description": "Atualizar a documentação técnica para refletir as últimas mudanças no sistema.",
-      "startDate": "2024-08-08",
-      "endDate": "2024-08-14",
-      "status": "not_started",
-      "progress": 0
-    },
-    {
-      "id": "3",
-      "title": "Revisar Código",
-      "description": "Revisar o código das últimas implementações e corrigir bugs encontrados.",
-      "startDate": "2024-08-15",
-      "endDate": "2024-08-21",
-      "status": "in_progress",
-      "progress": 60
-    },
-    {
-      "id": "4",
-      "title": "Planejar Sprint Seguinte",
-      "description": "Realizar o planejamento da próxima sprint, incluindo definição de objetivos e tarefas.",
+      "id": "7",
+      "title": "Realizar Treinamento da Equipe",
+      "description": "Organizar e conduzir um treinamento para a equipe sobre as novas ferramentas e processos.",
       "startDate": "2024-08-22",
       "endDate": "2024-08-28",
       "status": "not_started",
       "progress": 0
     },
     {
-      "id": "5",
-      "title": "Testar Nova Versão",
-      "description": "Testar a nova versão do software para garantir que todos os recursos funcionem corretamente.",
-      "startDate": "2024-08-29",
-      "endDate": "2024-09-04",
-      "status": "completed",
-      "progress": 100
+      "id": "8",
+      "title": "Revisar Estratégia de Marketing",
+      "description": "Avaliar a estratégia de marketing atual e ajustar conforme necessário para o próximo trimestre.",
+      "startDate": "2024-08-22",
+      "endDate": "2024-08-28",
+      "status": "not_started",
+      "progress": 0
+    },
+    {
+      "id": "9",
+      "title": "Planejar Eventos do Próximo Mês",
+      "description": "Planejar e definir os eventos e marcos importantes para o próximo mês, incluindo prazos e recursos necessários.",
+      "startDate": "2024-08-22",
+      "endDate": "2024-08-28",
+      "status": "in_progress",
+      "progress": 50
     }
   ]
 }

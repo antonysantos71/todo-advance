@@ -136,11 +136,9 @@ export const WeeklyGoals = () => {
         )}
 
         <div className="task-container max-h-96 overflow-y-auto px-12 my-12">
-          {list.length === 0 ? (
-            <p className="text-sm text-gray-500">Nenhum objetivo cadastrado.</p>
-          ) : (
-            ""
-          )}
+          {list.filter((week) => week.status === "not_started" || week.status === "in_progress" || week.status === 'on_hold').length == 0 ? (
+            <span>not weeks </span>
+          ) : ""}
           {list.filter((week) => week.status === "not_started" || week.status === "in_progress" || week.status === 'on_hold').map((week) => (
             <div
               key={week.id}
@@ -188,7 +186,12 @@ export const WeeklyGoals = () => {
               </div>
             </div>
           ))}
-          <div>completas  </div>
+          <span className="text-xl">Objetivos Completas</span>
+          {list.filter((week) => week.status === "completed").length === 0 ? (
+              <div className="text-zinc-400 text-lg">nenhum  objetivo cadastrado</div>
+            ) : (
+              ""
+            )}
           {list.filter((week) => week.status === "completed").map((week) => (
             <div
               key={week.id}
