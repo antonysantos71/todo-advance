@@ -51,8 +51,7 @@ export const WeeklyGoals = () => {
 
   const createWeeklyGoals = async () => {
     try {
-      const newWeek: IListPrps = {
-        id: list.length + 1, // Assuming unique ID based on the list length
+      const newWeek: Omit<IListPrps, "id"> = {
         title,
         description,
         startDate,
@@ -64,11 +63,34 @@ export const WeeklyGoals = () => {
       const createdWeek = await weeklyGoalsServices.createWeeklyGoals(newWeek);
 
       setList((previousWeeks) => [...previousWeeks, createdWeek]);
-      closeCreateModalWeekGoals(); // Close the modal after creation
+      closeCreateModalWeekGoals();
     } catch (error) {
       console.error("Error creating weekly goals:", error);
     }
   };
+  const completeWeeklyGoals = async (id: number, weekCompleted: IListPrps) => {
+    try {
+      const updatedTask: Omit<IListPrps, "id"> = {
+        title: weekCompleted.title,
+        description: weekCompleted.description,
+        startDate: weekCompleted.startDate,
+        endDate: weekCompleted.endDate,
+        status: "completed",
+        progress: 100
+      };
+      const updatedTaskData = await weeklyGoalsServices.updateWeeklyGoals(id, updatedTask);
+      if (updatedTaskData) {
+        setList((prevList) =>
+          prevList.map((item) =>
+            item.id === id ? { ...item, ...updatedTaskData } : item
+          )
+        );
+      }
+    } catch (error) {
+      console.error("Failed to update task", error);
+    }
+  };
+
 
   useEffect(() => {
     switch (status) {
@@ -76,13 +98,13 @@ export const WeeklyGoals = () => {
         setProgress(0);
         break;
       case "in_progress":
-        setProgress(50); // ou algum valor de progresso típico para "em progresso"
+        setProgress(50);
         break;
       case "completed":
         setProgress(100);
         break;
       case "on_hold":
-        setProgress(25); // ou algum valor de progresso típico para "em espera"
+        setProgress(25);
         break;
       default:
         setProgress(0);
@@ -96,7 +118,7 @@ export const WeeklyGoals = () => {
       <div className="w-full h-full">
         <Header
           openCreateModal={openCreateModalWeekGoals}
-          typePage="objetivos"
+          typePage="novo  objetivo"
           openAside={toggleAside}
         />
         {createWeekGoals && (
@@ -119,7 +141,7 @@ export const WeeklyGoals = () => {
           ) : (
             ""
           )}
-          {list.map((week) => (
+          {list.filter((week) => week.status === "not_started" || week.status === "in_progress" || week.status === 'on_hold').map((week) => (
             <div
               key={week.id}
               className="flex flex-col bg-zinc-800 p-4 rounded-lg shadow-md mb-4 hover:shadow-lg transition-shadow duration-300"
@@ -151,7 +173,55 @@ export const WeeklyGoals = () => {
                 </div>
               </div>
               <div className="flex items-center gap-3 mt-3 flex-wrap">
-                <button className="flex items-center text-green-400 hover:text-green-300 transition-colors">
+                <button onClick={() => completeWeeklyGoals(week.id, week)} className="flex items-center text-green-400 hover:text-green-300 transition-colors">
+                  <CheckCheck className="w-5 h-5" />
+                  <span className="ml-2">Completar</span>
+                </button>
+                <button className="flex items-center text-blue-400 hover:text-blue-300 transition-colors">
+                  <Edit className="w-5 h-5" />
+                  <span className="ml-2">Editar</span>
+                </button>
+                <button className="flex items-center text-red-400 hover:text-red-300 transition-colors">
+                  <Trash className="w-5 h-5" />
+                  <span className="ml-2">Excluir</span>
+                </button>
+              </div>
+            </div>
+          ))}
+          <div>completas  </div>
+          {list.filter((week) => week.status === "completed").map((week) => (
+            <div
+              key={week.id}
+              className="flex flex-col bg-zinc-800 p-4 rounded-lg shadow-md mb-4 hover:shadow-lg transition-shadow duration-300"
+            >
+              <div className="flex flex-col gap-2 mb-3">
+                <span className="text-xl font-bold text-white">
+                  {week.title}
+                </span>
+                <span className="text-sm text-gray-400">
+                  {week.description}
+                </span>
+              </div>
+              <div className="text-sm text-gray-400 bg-zinc-900 p-4 rounded-lg mb-4">
+                <div className="flex gap-4 flex-wrap">
+                  <span className="font-semibold">
+                    Início:{" "}
+                    <span className="font-normal">{week.startDate}</span>
+                  </span>
+                  <span className="font-semibold">
+                    Fim: <span className="font-normal">{week.endDate}</span>
+                  </span>
+                  <span className="font-semibold">
+                    Status: <span className="font-normal">{week.status}</span>
+                  </span>
+                  <span className="font-semibold">
+                    Progresso:{" "}
+                    <span className="font-normal">{week.progress}%</span>
+                  </span>
+                </div>
+              </div>
+              <div className="flex items-center gap-3 mt-3 flex-wrap">
+                <button onClick={() => completeWeeklyGoals(week.id, week)} className="flex items-center text-green-400 hover:text-green-300 transition-colors">
                   <CheckCheck className="w-5 h-5" />
                   <span className="ml-2">Completar</span>
                 </button>

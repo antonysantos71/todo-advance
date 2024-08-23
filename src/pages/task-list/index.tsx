@@ -104,7 +104,7 @@ export const TaskList = () => {
       <div className="w-full h-full">
         <Header
           openCreateModal={openCreateModal}
-          typePage="atividades"
+          typePage="nova atividades"
           openAside={toggleAside}
         />
         {createModal && (

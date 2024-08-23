@@ -111,7 +111,7 @@ export const Reminders = () => {
       <div className="h-full w-full">
         <Header
           openCreateModal={openCreateModalReminders}
-          typePage="lembretes"
+          typePage="novo lembretes"
           openAside={toggleAside}
         />
         {createReminders && (

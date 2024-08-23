@@ -1,51 +1,62 @@
 {
   "tasks": [],
-  "reminders": [],
+  "reminders": [
+    {
+      "id": "5466",
+      "title": "cccccc",
+      "description": "cccc",
+      "priority": "medium",
+      "category": "ccccc",
+      "dueDate": "2024-08-30",
+      "recurring": "daily",
+      "dateCreated": "23/08/2024, 08:17:54"
+    }
+  ],
   "weeklyGoals": [
     {
-      "id": 1,
-      "title": "sssss",
-      "description": "000",
-      "startDate": "2024-08-23",
-      "endDate": "2024-08-23",
+      "id": "1",
+      "title": "Desenvolver Nova Funcionalidade",
+      "description": "Adicionar uma nova funcionalidade de busca avançada na aplicação.",
+      "startDate": "2024-08-01",
+      "endDate": "2024-08-07",
+      "status": "in_progress",
+      "progress": 40
+    },
+    {
+      "id": "2",
+      "title": "Atualizar Documentação",
+      "description": "Atualizar a documentação técnica para refletir as últimas mudanças no sistema.",
+      "startDate": "2024-08-08",
+      "endDate": "2024-08-14",
       "status": "not_started",
       "progress": 0
     },
     {
-      "id": 2,
-      "title": "sssssss",
-      "description": "sssssssss",
-      "startDate": "2024-09-05",
-      "endDate": "2024-08-22",
-      "status": "in_progress",
-      "progress": 0
-    },
-    {
-      "id": 3,
-      "title": "sssss",
-      "description": "sss",
+      "id": "3",
+      "title": "Revisar Código",
+      "description": "Revisar o código das últimas implementações e corrigir bugs encontrados.",
       "startDate": "2024-08-15",
-      "endDate": "2024-09-07",
+      "endDate": "2024-08-21",
       "status": "in_progress",
-      "progress": 0
+      "progress": 60
     },
     {
-      "id": 4,
-      "title": "sssss",
-      "description": "ssssssss",
-      "startDate": "4567-03-12",
-      "endDate": "0456-03-12",
-      "status": "in_progress",
-      "progress": 0
-    },
-    {
-      "id": 5,
-      "title": "sssssssss",
-      "description": "ssssssssssss",
-      "startDate": "2024-08-14",
+      "id": "4",
+      "title": "Planejar Sprint Seguinte",
+      "description": "Realizar o planejamento da próxima sprint, incluindo definição de objetivos e tarefas.",
+      "startDate": "2024-08-22",
       "endDate": "2024-08-28",
-      "status": "",
+      "status": "not_started",
       "progress": 0
+    },
+    {
+      "id": "5",
+      "title": "Testar Nova Versão",
+      "description": "Testar a nova versão do software para garantir que todos os recursos funcionem corretamente.",
+      "startDate": "2024-08-29",
+      "endDate": "2024-09-04",
+      "status": "completed",
+      "progress": 100
     }
   ]
 }

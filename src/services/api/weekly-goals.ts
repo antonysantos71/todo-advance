@@ -1,3 +1,4 @@
+import axios from "axios";
 import { api } from "."
 type Status = "not_started" | "in_progress" | "completed" | "on_hold" | "";
 
@@ -21,7 +22,7 @@ const getWeeklyGoals = async (): Promise<IWeeklyGoalsProps[]> => {
   }
 }
 
-const createWeeklyGoals = async (week: IWeeklyGoalsProps):Promise<IWeeklyGoalsProps> => {
+const createWeeklyGoals = async (week: Omit<IWeeklyGoalsProps,  "id">):Promise<IWeeklyGoalsProps> => {
   try {
     const response = await api.post("/weeklyGoals", week);
     return response.data;
@@ -30,16 +31,19 @@ const createWeeklyGoals = async (week: IWeeklyGoalsProps):Promise<IWeeklyGoalsPr
     throw error;
   }
 }
-
-const updateWeeklyGoals = async (id: number, newWeek: IWeeklyGoalsProps): Promise<IWeeklyGoalsProps> => {
+const updateWeeklyGoals = async (id: number, newWeek: Omit<IWeeklyGoalsProps, "id">): Promise<IWeeklyGoalsProps> => {
   try {
-    const response = await api.put(`/weekly-goals/${id}`, newWeek);
+    const response = await api.put(`/weeklyGoals/${id}`, newWeek);
     return response.data;
   } catch (error) {
-    console.error(error);
-    throw error;
+    if (axios.isAxiosError(error)) {
+      console.error("Axios error details:", error.response?.data);
+    } else {
+      console.error("General error:", error);
+    }
+    throw error; 
   }
-}
+};
 
 const deleteWeeklyGoals = async (id: number): Promise<void> => {
   try {

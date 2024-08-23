@@ -20,7 +20,7 @@ export const Header = ({
         <span className="text-xl">{typePage}</span>
       </div>
       <button onClick={openCreateModal} className="flex gap-2 flex-row items-center justify-center bg-zinc-600 p-2 rounded-lg sm:p-3">
-        <span className="hidden sm:flex">nova {typePage}</span>
+        <span className="hidden sm:flex">{typePage}</span>
         <Plus className="size-5" />
       </button>
     </div>
