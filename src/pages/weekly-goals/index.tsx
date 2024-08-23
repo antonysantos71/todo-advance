@@ -136,13 +136,14 @@ export const WeeklyGoals = () => {
         )}
 
         <div className="task-container max-h-96 overflow-y-auto px-12 my-12">
+        <span className="text-xl mb-5">Objetivos Semanais</span>
           {list.filter((week) => week.status === "not_started" || week.status === "in_progress" || week.status === 'on_hold').length == 0 ? (
-            <span>not weeks </span>
+            <div className="text-zinc-400 text-md">nenhum  objetivo completo </div>
           ) : ""}
           {list.filter((week) => week.status === "not_started" || week.status === "in_progress" || week.status === 'on_hold').map((week) => (
             <div
               key={week.id}
-              className="flex flex-col bg-zinc-800 p-4 rounded-lg shadow-md mb-4 hover:shadow-lg transition-shadow duration-300"
+              className="flex flex-col bg-zinc-800 p-4 rounded-lg shadow-md mb-4 hover:shadow-lg transition-shadow duration-300 mt-5"
             >
               <div className="flex flex-col gap-2 mb-3">
                 <span className="text-xl font-bold text-white">
@@ -186,16 +187,16 @@ export const WeeklyGoals = () => {
               </div>
             </div>
           ))}
-          <span className="text-xl">Objetivos Completas</span>
+          <span className="text-xl">Objetivos Completos</span>
           {list.filter((week) => week.status === "completed").length === 0 ? (
-              <div className="text-zinc-400 text-lg">nenhum  objetivo cadastrado</div>
+              <div className="text-zinc-400 text-md">nenhum  objetivo completo </div>
             ) : (
               ""
             )}
           {list.filter((week) => week.status === "completed").map((week) => (
             <div
               key={week.id}
-              className="flex flex-col bg-zinc-800 p-4 rounded-lg shadow-md mb-4 hover:shadow-lg transition-shadow duration-300"
+              className="flex flex-col bg-zinc-800 p-4 rounded-lg shadow-md mb-4 mt-5 hover:shadow-lg transition-shadow duration-300"
             >
               <div className="flex flex-col gap-2 mb-3">
                 <span className="text-xl font-bold text-white">

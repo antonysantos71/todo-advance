@@ -1,4 +1,3 @@
-// pages/TaskList.tsx
 import { useEffect, useState } from "react";
 import { Header } from "../../components/header";
 import { Aside } from "../../components/aside";
@@ -21,7 +20,6 @@ export const TaskList = () => {
   const [description, setDescription] = useState<string>("");
   const [editTask, setEditTask] = useState<IListPrps | null>(null);
   const [editModal, setEditModal] = useState<boolean>(false);
-  const [showAll, setShowAll] = useState(false);
   const [isAsideOpen, setIsAsideOpen] = useState<boolean>(false);
 
   const openCreateModal = () => setModal(true);
@@ -96,7 +94,6 @@ export const TaskList = () => {
     }
   };
 
-  const initialDisplayCount = 4;
 
   return (
     <div className="flex">
@@ -133,7 +130,6 @@ export const TaskList = () => {
             ""
           )}
           {list
-            .slice(0, showAll ? list.length : initialDisplayCount)
             .map((task) => (
               <div
                 key={task.id}
@@ -163,14 +159,6 @@ export const TaskList = () => {
                 </div>
               </div>
             ))}
-          {list.length > initialDisplayCount && (
-            <button
-              className="mt-2 text-blue-500 hover:underline"
-              onClick={() => setShowAll(!showAll)}
-            >
-              {showAll ? "Show Less" : "Show More"}
-            </button>
-          )}
         </div>
       </div>
     </div>

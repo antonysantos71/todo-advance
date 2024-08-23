@@ -27,7 +27,6 @@ export const Reminders = () => {
   const [dueDate, setDueDate] = useState<string | undefined>(undefined);
   const [recurring, setRecurring] = useState<string | undefined>(undefined);
   const [list, setList] = useState<IListPrps[]>([]);
-  const [showAll, setShowAll] = useState(false);
   const [selectedReminderId, setSelectedReminderId] = useState<number | null>(
     null
   );
@@ -132,7 +131,6 @@ export const Reminders = () => {
             <p className="text-sm text-gray-500">Nenhum lembrete cadastrado.</p>
           ) : (
             list
-              .slice(0, showAll ? list.length : initialDisplayCount)
               .map((reminder) => (
                 <div
                   key={reminder.id}
@@ -157,14 +155,6 @@ export const Reminders = () => {
                   </div>
                 </div>
               ))
-          )}
-          {list.length > initialDisplayCount && (
-            <button
-              className="mt-2 text-blue-500 hover:underline"
-              onClick={() => setShowAll(!showAll)}
-            >
-              {showAll ? "Show Less" : "Show More"}
-            </button>
           )}
         </div>
 

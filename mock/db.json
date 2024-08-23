@@ -27,16 +27,6 @@
   ],
   "reminders": [
     {
-      "id": "6789",
-      "title": "Enviar Relatório Semanal",
-      "description": "Enviar o relatório semanal de progresso para o gerente de projeto.",
-      "priority": "high",
-      "category": "trabalho",
-      "dueDate": "2024-08-30",
-      "recurring": "weekly",
-      "dateCreated": "2024-08-23T09:00:00"
-    },
-    {
       "id": "1234",
       "title": "Reunião de Equipe",
       "description": "Participar da reunião de equipe para discutir as prioridades da semana.",
@@ -69,13 +59,13 @@
   ],
   "weeklyGoals": [
     {
-      "id": "6",
       "title": "Finalizar Implementação de API",
       "description": "Concluir a implementação da nova API e garantir que esteja funcionando corretamente com os sistemas existentes.",
       "startDate": "2024-08-22",
       "endDate": "2024-08-28",
-      "status": "in_progress",
-      "progress": 40
+      "status": "completed",
+      "progress": 100,
+      "id": "6"
     },
     {
       "id": "7",
@@ -103,6 +93,24 @@
       "endDate": "2024-08-28",
       "status": "in_progress",
       "progress": 50
+    },
+    {
+      "title": "llllll",
+      "description": "zsfdfhdg",
+      "startDate": "5333-03-13",
+      "endDate": "46768-03-31",
+      "status": "completed",
+      "progress": 100,
+      "id": "6d62"
+    },
+    {
+      "id": "96a7",
+      "title": "sextsuifbasicbasicbyas",
+      "description": "çbefubhadovasduvo",
+      "startDate": "42014-02-23",
+      "endDate": "0155-12-15",
+      "status": "on_hold",
+      "progress": 25
     }
   ]
 }
