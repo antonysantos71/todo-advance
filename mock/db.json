@@ -1,26 +1,133 @@
 {
-  "tasks": [],
+  "tasks": [
+    {
+      "id": "258b",
+      "title": "Finish project report",
+      "description": "Complete and review the final project report before submission.",
+      "dateCreated": "2024-08-24T00:33:17.563Z"
+    },
+    {
+      "id": "1a2b",
+      "title": "Grocery shopping",
+      "description": "Buy groceries for the week including fruits, vegetables, and dairy products.",
+      "dateCreated": "2024-08-23T10:15:30.000Z"
+    },
+    {
+      "id": "3c4d",
+      "title": "Schedule team meeting",
+      "description": "Arrange a meeting with the team to discuss upcoming milestones.",
+      "dateCreated": "2024-08-22T14:45:00.000Z"
+    },
+    {
+      "id": "5e6f",
+      "title": "Book dentist appointment",
+      "description": "Schedule an appointment for a routine dental check-up.",
+      "dateCreated": "2024-08-21T09:30:45.000Z"
+    },
+    {
+      "id": "7g8h",
+      "title": "Update resume",
+      "description": "Revise and update resume with recent job experiences and skills.",
+      "dateCreated": "2024-08-20T17:05:20.000Z"
+    }
+  ],
   "reminders": [
     {
       "id": "ec01",
-      "title": "wwwwwwwwwwww",
-      "description": "wwwwwwwwwwwwwww",
+      "title": "Project deadline",
+      "description": "Submit the final version of the project report.",
       "priority": "medium",
-      "category": "wwwwwwwwwwwww",
+      "category": "work",
       "dueDate": "2024-08-30",
       "recurring": "weekly",
-      "dateCreated": "23/08/2024, 20:59:31"
+      "dateCreated": "2024-08-23T20:59:31.000Z"
     },
     {
       "id": "972b",
-      "title": "aaaaaa",
-      "description": "aaaaaaaa",
+      "title": "Morning jog",
+      "description": "Reminder for daily morning exercise.",
       "priority": "high",
-      "category": "sss",
-      "dueDate": "2024-08-07",
+      "category": "health",
+      "dueDate": "2024-08-24",
       "recurring": "daily",
-      "dateCreated": "23/08/2024, 21:22:52"
+      "dateCreated": "2024-08-23T21:22:52.000Z"
+    },
+    {
+      "id": "b1c2",
+      "title": "Meeting with client",
+      "description": "Discuss project updates and requirements with the client.",
+      "priority": "high",
+      "category": "work",
+      "dueDate": "2024-08-28",
+      "recurring": "once",
+      "dateCreated": "2024-08-22T08:00:00.000Z"
+    },
+    {
+      "id": "d3e4",
+      "title": "Pay utility bills",
+      "description": "Ensure all utility bills are paid before the due date.",
+      "priority": "medium",
+      "category": "personal",
+      "dueDate": "2024-08-26",
+      "recurring": "monthly",
+      "dateCreated": "2024-08-21T14:00:00.000Z"
+    },
+    {
+      "id": "f5g6",
+      "title": "Doctor's appointment",
+      "description": "Regular check-up with the doctor.",
+      "priority": "medium",
+      "category": "health",
+      "dueDate": "2024-08-31",
+      "recurring": "once",
+      "dateCreated": "2024-08-20T11:30:00.000Z"
     }
   ],
-  "weeklyGoals": []
+  "weeklyGoals": [
+    {
+      "id": "8b85",
+      "title": "Complete weekly report",
+      "description": "Finish and review the weekly progress report.",
+      "startDate": "2024-08-14",
+      "endDate": "2024-08-16",
+      "status": "not_started",
+      "progress": 0
+    },
+    {
+      "id": "9c96",
+      "title": "Launch marketing campaign",
+      "description": "Prepare and execute the marketing campaign for the new product.",
+      "startDate": "2024-08-17",
+      "endDate": "2024-08-23",
+      "status": "in_progress",
+      "progress": 50
+    },
+    {
+      "id": "10d7",
+      "title": "Organize team-building event",
+      "description": "Plan and coordinate a team-building activity for the department.",
+      "startDate": "2024-08-15",
+      "endDate": "2024-08-21",
+      "status": "completed",
+      "progress": 100
+    },
+    {
+      "id": "11e8",
+      "title": "Develop new feature",
+      "description": "Design and develop a new feature for the application.",
+      "startDate": "2024-08-16",
+      "endDate": "2024-08-22",
+      "status": "not_started",
+      "progress": 0
+    },
+    {
+      "title": "Review customer feedback",
+      "description": "Analyze and respond to customer feedback received this week.",
+      "startDate": "2024-08-21",
+      "endDate": "2024-08-27",
+      "status": "completed",
+      "progress": 100,
+      "id": "12f9"
+    }
+  ]
 }
