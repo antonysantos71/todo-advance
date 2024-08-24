@@ -139,7 +139,7 @@ export const TaskList = () => {
                   <span className="font-semibold text-white truncate">
                     {task.title}
                   </span>
-                  <span className="text-sm text-gray-500 truncate">
+                  <span className="text-sm text-gray-500">
                     {task.description}
                   </span>
                 </div>
