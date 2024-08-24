@@ -47,7 +47,7 @@ const updateWeeklyGoals = async (id: number, newWeek: Omit<IWeeklyGoalsProps, "i
 
 const deleteWeeklyGoals = async (id: number): Promise<void> => {
   try {
-    await api.delete(`/weekly-goals/${id}`);
+    await api.delete(`/weeklyGoals/${id}`);
   } catch (error) {
     console.error(error);
     throw error;

@@ -128,13 +128,13 @@ export const Reminders = () => {
 
         <div className="task-container max-h-96 overflow-y-auto px-12 my-12">
           {list.length === 0 ? (
-            <p className="text-sm text-gray-500">Nenhum lembrete cadastrado.</p>
+            <p className="text-sm text-gray-400 bg-zinc-800 p-4 rounded-lg m-4">Nenhum lembrete cadastrado.</p>
           ) : (
             list
               .map((reminder) => (
                 <div
                   key={reminder.id}
-                  className="flex justify-between bg-zinc-800 p-3 px-5 rounded-md mb-2"
+                  className="flex justify-between bg-zinc-800 p-3 px-5 rounded-md mb-2 flex-wrap "
                 >
                   <div className="flex flex-col gap-1">
                     <span className="font-semibold text-white">

@@ -68,6 +68,17 @@ export const WeeklyGoals = () => {
       console.error("Error creating weekly goals:", error);
     }
   };
+
+  const deleteWeeklyGoals = async (id: number) => {
+    try{
+      await weeklyGoalsServices.deleteWeeklyGoals(id);
+      setList((prevReminders) =>
+        prevReminders.filter((reminder) => reminder.id!== id)
+      );
+    } catch(error) {
+      console.error("Error deleting weekly goals:", error);
+    }
+  }
   const completeWeeklyGoals = async (id: number, weekCompleted: IListPrps) => {
     try {
       const updatedTask: Omit<IListPrps, "id"> = {
@@ -138,7 +149,7 @@ export const WeeklyGoals = () => {
         <div className="task-container max-h-96 overflow-y-auto px-12 my-12">
         <span className="text-xl mb-5">Objetivos Semanais</span>
           {list.filter((week) => week.status === "not_started" || week.status === "in_progress" || week.status === 'on_hold').length == 0 ? (
-            <div className="text-zinc-400 text-md">nenhum  objetivo completo </div>
+            <div className="text-sm text-gray-400 bg-zinc-800 p-4 rounded-lg m-4">nenhum  objetivo completo </div>
           ) : ""}
           {list.filter((week) => week.status === "not_started" || week.status === "in_progress" || week.status === 'on_hold').map((week) => (
             <div
@@ -176,11 +187,7 @@ export const WeeklyGoals = () => {
                   <CheckCheck className="w-5 h-5" />
                   <span className="ml-2">Completar</span>
                 </button>
-                <button className="flex items-center text-blue-400 hover:text-blue-300 transition-colors">
-                  <Edit className="w-5 h-5" />
-                  <span className="ml-2">Editar</span>
-                </button>
-                <button className="flex items-center text-red-400 hover:text-red-300 transition-colors">
+                <button onClick={() => deleteWeeklyGoals(week.id)} className="flex items-center text-red-400 hover:text-red-300 transition-colors">
                   <Trash className="w-5 h-5" />
                   <span className="ml-2">Excluir</span>
                 </button>
@@ -189,7 +196,7 @@ export const WeeklyGoals = () => {
           ))}
           <span className="text-xl">Objetivos Completos</span>
           {list.filter((week) => week.status === "completed").length === 0 ? (
-              <div className="text-zinc-400 text-md">nenhum  objetivo completo </div>
+              <div className="text-sm text-gray-400 bg-zinc-800 p-4 rounded-lg m-4">nenhum  objetivo completo </div>
             ) : (
               ""
             )}
@@ -229,11 +236,7 @@ export const WeeklyGoals = () => {
                   <CheckCheck className="w-5 h-5" />
                   <span className="ml-2">Completar</span>
                 </button>
-                <button className="flex items-center text-blue-400 hover:text-blue-300 transition-colors">
-                  <Edit className="w-5 h-5" />
-                  <span className="ml-2">Editar</span>
-                </button>
-                <button className="flex items-center text-red-400 hover:text-red-300 transition-colors">
+                <button onClick={() => deleteWeeklyGoals(week.id)} className="flex items-center text-red-400 hover:text-red-300 transition-colors">
                   <Trash className="w-5 h-5" />
                   <span className="ml-2">Excluir</span>
                 </button>
